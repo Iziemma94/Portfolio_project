@@ -1,0 +1,112 @@
+/* styles.css */
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Hero section */
+.hero {
+    background-image: url('/static/images/hero-bg.jpg'); /* Replace with your hero image */
+    background-size: cover;
+    text-align: center;
+    color: #fff;
+    padding: 100px 0;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Add these styles for images */
+img {
+    width: 100%; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px; /* Add margin around the image */
+}
+
+img.bright {
+    filter: brightness(1.2); /* Increase brightness */
+}
+
+img.contrast {
+    filter: contrast(1.2); /* Increase contrast */
+}
+
+img.saturate {
+    filter: saturate(1.5); /* Increase saturation */
+}
+
+img.responsive {
+    max-width: 100%; /* Make images responsive */
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.cta-button:hover {
+    background-color: #ff4500;
+}
+
+/* Features section */
+.features {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.feature {
+    flex: 1;
+    text-align: center;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+

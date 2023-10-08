@@ -1,0 +1,66 @@
+<form action="{{ url_for('search') }}" method="GET" class="search-form">
+    <input type="text" name="query" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izi Recipe Sharing Website</title>
+    <!-- Add your CSS link(s) for styling -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+     <!-- Display your logo -->
+    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Recipe Sharing Website Logo">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('add_recipe') }}">Add Recipe</a></li>
+		<li><a href="{{ url_for('create_recipe') }}">Create Recipe</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('user_profile') }}">Profile</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        
+        <!-- Add the search form here -->
+        <div class="search-container">
+            <form action="{{ url_for('search') }}" method="GET">
+                <input type="text" name="query" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </header>
+
+    <main>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flash-messages">
+            {% for category, message in messages %}
+            <div class="flash-message {{ category }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <!-- Footer content goes here -->
+	 <div class="copyright">
+            &copy; 2023 Izi Recipe Sharing Website
+	 </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ user.username }}'s Profile</h1>
+
+    <div class="user-profile">
+        <div class="avatar">
+            <img src="{{ user.avatar }}" alt="Profile Picture">
+        </div>
+        <div class="user-info">
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Bio:</strong> {{ user.bio }}</p>
+            <p><strong>Facebook Link:</strong> {{ user.facebook_link }}</p>
+            <p><strong>Twitter Link:</strong> {{ user.twitter_link }}</p>
+        </div>
+    </div>
+    
+    <a href="{{ url_for('edit_profile') }}" class="btn btn-primary">Edit Profile</a>
+
+     <!-- Image Upload Form -->
+    <form method="POST" action="{{ url_for('upload_profile_picture') }}" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <div class="form-group">
+            <label for="profile_picture">Upload Profile Picture</label>
+            <input type="file" class="form-control-file" id="profile_picture" name="profile_picture">
+        </div>
+        <button type="submit" class="btn btn-primary">Upload Profile Picture</button>
+    </form>
+
+    <!-- Display the uploaded profile picture -->
+    {% if user.avatar %}
+        <img src="{{ url_for('static', filename='uploads/' + user.avatar) }}" alt="Profile Picture" class="profile-image">
+    {% endif %}
+{% endblock %}

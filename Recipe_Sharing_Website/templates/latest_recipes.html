@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Latest Recipes</h1>
+
+    <div class="recipe-list">
+        {% for recipe in latest_recipes %}
+            <div class="recipe-item">
+                <h2>{{ recipe.title }}</h2>
+                <!-- Display other recipe details -->
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+

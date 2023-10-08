@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recipe Details</title>
+</head>
+<body>
+    <h1>Recipe Details</h1>
+    
+    {% for recipe in recipes %}
+    <div class="recipe">
+        <!-- Display the recipe name, description, and other details -->
+        <h2>{{ recipe.name }}</h2>
+        <p>{{ recipe.description }}</p>
+        
+        <!-- Display the uploaded image -->
+        <img src="/uploads/{{ recipe.image_filename }}" alt="Recipe Image">
+    </div>
+    {% endfor %}
+</body>
+</html>

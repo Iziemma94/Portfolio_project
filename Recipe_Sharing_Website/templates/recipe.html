@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>{{ recipe.title }}</h1>
+
+    {% if recipe.image %}
+    	<!-- Debugging output -->
+	<p>Image Filename: {{ recipe.image_filename }}</p>
+        <!-- Display the recipe image -->
+        <img src="{{ url_for('uploads', filename=recipe.image_filename) }}" alt="Recipe Image">
+
+
+    {% else %}
+        <!-- Display a placeholder image or message when there's no image -->
+        <p>No image available</p>
+    {% endif %}
+
+    <div class="recipe-details">
+        <h2>Ingredients:</h2>
+        <p>{{ recipe.ingredients }}</p>
+
+        <h2>Instructions:</h2>
+        <p>{{ recipe.instructions }}</p>
+    </div>
+
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Home</a>
+
+    {% if current_user.is_authenticated and current_user.id == recipe.author.id %}
+        <a href="{{ url_for('edit_recipe', id=recipe.id) }}" class="btn btn-primary">Edit Recipe</a>
+        <a href="{{ url_for('delete_recipe', id=recipe.id) }}" class="btn btn-danger">Delete Recipe</a>
+    {% endif %}
+{% endblock %}

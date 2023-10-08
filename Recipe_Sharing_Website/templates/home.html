@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Welcome to Recipe Sharing Website</h1>
+
+    <section class="recipe-list">
+        <h2>Latest Recipes</h2>
+        <ul>
+            {% for recipe in recipes %}
+            <li>
+                <h3><a href="{{ url_for('recipe', id=recipe.id) }}">{{ recipe.title }}</a></h3>
+                <p>{{ recipe.ingredients }}</p>
+                <p>By: {{ recipe.author.username }}</p>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create a New Recipe</h1>
+
+  <form method="POST" action="/create_recipe" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+
+    <div class="form-group">
+      {{ form.title.label(class="form-control-label") }}
+      {{ form.title(class="form-control") }}
+    </div>
+
+    <div class="form-group">
+      {{ form.ingredients.label(class="form-control-label") }}
+      {{ form.ingredients(class="form-control") }}
+    </div>
+
+     <div class="form-group">
+      {{ form.instructions.label(class="form-control-label") }}
+      {{ form.instructions(class="form-control yellow-border") }}
+    </div>
+
+     <div class="form-group">
+        <label for="image" class="form-control-label">Recipe Image</label>
+        <input type="file" id="image" name="image" class="form-control-file">
+    </div>
+       <button type="submit" class="btn btn-primary">Create Recipe</button>
+</form>
+{% endblock %}

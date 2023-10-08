@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Edit Your Profile</h1>
+
+    <form method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.username.label(class="form-control-label") }}
+            {{ form.username(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.email.label(class="form-control-label") }}
+            {{ form.email(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.bio.label(class="form-control-label") }}
+            {{ form.bio(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.facebook_link.label(class="form-control-label") }}
+            {{ form.facebook_link(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.twitter_link.label(class="form-control-label") }}
+            {{ form.twitter_link(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.avatar.label(class="form-control-label") }}
+            {{ form.avatar(class="form-control-file") }}
+        </div>
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </form>
+    
+    <a href="{{ url_for('user_profile') }}" class="btn btn-secondary">Cancel</a>
+{% endblock %}
