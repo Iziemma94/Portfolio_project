@@ -244,19 +244,17 @@ def user_profile():
         # Get the currently logged-in user's data
         user_data = {
             'username': current_user.username,
+            'email': current_user.email,
+            'bio': current_user.bio,
+            'facebook_link': current_user.facebook_link,
+            'twitter_link': current_user.twitter_link,
+            # Add more user-specific data as needed
         }
-
-        try:
-            # Attempt to create an account (this part of code is not clear in the context)
-            # If successful, flash a success message and redirect to the login page
-            flash('Account created successfully', 'success')
-            return redirect(url_for('login'))
-        except IntegrityError as e:
-            db.session.rollback()
-            print(f"IntegrityError: {str(e)}")  # Print the error message for debugging
-            flash('Error creating the account. Please try again.', 'danger')
-
-    return render_template('register.html')
+        return render_template('profile.html', user=user_data, form=profile_form)
+    else:
+        # Redirect to the login page if the user is not logged in
+        flash('Please log in to access this page', 'danger')
+        return redirect(url_for('login'))
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 def edit_profile():
